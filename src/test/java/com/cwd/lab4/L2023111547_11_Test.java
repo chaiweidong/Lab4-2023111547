@@ -70,7 +70,7 @@ public class L2023111547_11_Test {
         int[] nums = {-5, -4, -3, -2, -1};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        assertTrue("全负数数组应该返回空列表", result.isEmpty());
+        assertFalse("❌ 这个断言是错误的：全正数数组应该返回空列表", result.isEmpty());
     }
 
     /**
