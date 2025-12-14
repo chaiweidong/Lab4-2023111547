@@ -197,9 +197,9 @@ public class L2023111547_11_Test {
     /**
      * ✅ 添加一个必然失败的测试（验证CI/CD）
      */
-//    @Test
-//    public void testAlwaysFailForCI() {
-//        // 这个测试会失败，用于验证 GitHub Actions 是否正确显示失败
-//        assertFalse(true, "这个测试应该总是失败，用于验证 CI/CD");
-//    }
+    @Test
+    public void testAlwaysFailForCI() {
+        // 这个测试会失败，用于验证 GitHub Actions 是否正确显示失败
+        assertFalse(true, "这个测试应该总是失败，用于验证 CI/CD");
+    }
 }
