@@ -1,12 +1,12 @@
 package com.cwd.lab4;
 
 import com.cwd.lab4.Solution;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 三数之和算法测试类
@@ -27,7 +27,7 @@ public class L2023111547_11_Test {
 
     private Solution solution;
 
-    @Before
+    @BeforeEach  // ✅ JUnit 5 的 @BeforeEach（不是 @Before）
     public void setUp() {
         solution = new Solution();
     }
@@ -42,9 +42,10 @@ public class L2023111547_11_Test {
         int[] nums = {-1, 0, 1, 2, -1, -4};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        assertEquals("应该找到2个不重复的三元组", 2, result.size());
-        assertTrue("应该包含三元组 [-1, -1, 2]", containsTriplet(result, -1, -1, 2));
-        assertTrue("应该包含三元组 [-1, 0, 1]", containsTriplet(result, -1, 0, 1));
+        // ✅ JUnit 5：参数顺序变了（期望值在前，实际值在后），消息在最后
+        assertEquals(2, result.size(), "应该找到2个不重复的三元组");
+        assertTrue(containsTriplet(result, -1, -1, 2), "应该包含三元组 [-1, -1, 2]");
+        assertTrue(containsTriplet(result, -1, 0, 1), "应该包含三元组 [-1, 0, 1]");
     }
 
     /**
@@ -57,18 +58,7 @@ public class L2023111547_11_Test {
         int[] nums = {1, 2, 3, 4, 5};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        assertTrue("全正数数组应该返回空列表", result.isEmpty());
-    }
-
-    /**
-     * 测试目的：验证算法能正确处理无解的情况
-     * 测试用例：全负数数组，不可能有三数之和为0
-     * 等价类：无效等价类（无解）
-     */
-    @Test
-    public void testForceFailureToVerifyWorkflow() {
-        // 这个测试会失败，用于验证 workflow 是否运行
-        fail("Force failure to verify GitHub Actions is working");
+        assertTrue(result.isEmpty(), "全正数数组应该返回空列表");
     }
 
     /**
@@ -82,8 +72,8 @@ public class L2023111547_11_Test {
         int[] nums = {0, 0, 0};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        assertEquals("应该找到1个三元组", 1, result.size());
-        assertTrue("应该包含三元组 [0, 0, 0]", containsTriplet(result, 0, 0, 0));
+        assertEquals(1, result.size(), "应该找到1个三元组");
+        assertTrue(containsTriplet(result, 0, 0, 0), "应该包含三元组 [0, 0, 0]");
     }
 
     /**
@@ -96,7 +86,7 @@ public class L2023111547_11_Test {
         int[] nums = {0, 1, 1};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        assertTrue("应该返回空列表", result.isEmpty());
+        assertTrue(result.isEmpty(), "应该返回空列表");
     }
 
     /**
@@ -110,7 +100,7 @@ public class L2023111547_11_Test {
         int[] nums = {};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        assertTrue("空数组应该返回空列表", result.isEmpty());
+        assertTrue(result.isEmpty(), "空数组应该返回空列表");
     }
 
     /**
@@ -124,7 +114,7 @@ public class L2023111547_11_Test {
         int[] nums = {0, 1};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        assertTrue("少于3个元素的数组应该返回空列表", result.isEmpty());
+        assertTrue(result.isEmpty(), "少于3个元素的数组应该返回空列表");
     }
 
     /**
@@ -138,8 +128,8 @@ public class L2023111547_11_Test {
         List<List<Integer>> result = solution.threeSum(nums);
 
         // 应该只有 [-1, 0, 1]，不能有重复
-        assertEquals("应该只有1个不重复的三元组", 1, result.size());
-        assertTrue("应该包含三元组 [-1, 0, 1]", containsTriplet(result, -1, 0, 1));
+        assertEquals(1, result.size(), "应该只有1个不重复的三元组");
+        assertTrue(containsTriplet(result, -1, 0, 1), "应该包含三元组 [-1, 0, 1]");
     }
 
     /**
@@ -152,9 +142,9 @@ public class L2023111547_11_Test {
         int[] nums = {-2, 0, 1, 1, 2};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        assertEquals("应该找到2个三元组", 2, result.size());
-        assertTrue("应该包含三元组 [-2, 0, 2]", containsTriplet(result, -2, 0, 2));
-        assertTrue("应该包含三元组 [-2, 1, 1]", containsTriplet(result, -2, 1, 1));
+        assertEquals(2, result.size(), "应该找到2个三元组");
+        assertTrue(containsTriplet(result, -2, 0, 2), "应该包含三元组 [-2, 0, 2]");
+        assertTrue(containsTriplet(result, -2, 1, 1), "应该包含三元组 [-2, 1, 1]");
     }
 
     /**
@@ -167,8 +157,7 @@ public class L2023111547_11_Test {
         int[] nums = {-4, -2, -2, -1, 0, 1, 2, 2, 3, 4};
         List<List<Integer>> result = solution.threeSum(nums);
 
-        // 预期解：[-4,0,4], [-4,1,3], [-4,2,2], [-2,-2,4], [-2,0,2], [-1,0,1]
-        assertEquals("应该找到6个不重复的三元组", 7, result.size());
+        assertEquals(7, result.size(), "应该找到7个不重复的三元组");
     }
 
     /**
@@ -204,4 +193,13 @@ public class L2023111547_11_Test {
         }
         return false;
     }
+
+    /**
+     * ✅ 添加一个必然失败的测试（验证CI/CD）
+     */
+//    @Test
+//    public void testAlwaysFailForCI() {
+//        // 这个测试会失败，用于验证 GitHub Actions 是否正确显示失败
+//        assertFalse(true, "这个测试应该总是失败，用于验证 CI/CD");
+//    }
 }
