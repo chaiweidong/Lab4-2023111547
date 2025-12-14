@@ -66,11 +66,9 @@ public class L2023111547_11_Test {
      * 等价类：无效等价类（无解）
      */
     @Test
-    public void testAllNegativeNumbersNoSolution() {
-        int[] nums = {-5, -4, -3, -2, -1};
-        List<List<Integer>> result = solution.threeSum(nums);
-
-        assertFalse("❌ 这个断言是错误的：全正数数组应该返回空列表", result.isEmpty());
+    public void testForceFailureToVerifyWorkflow() {
+        // 这个测试会失败，用于验证 workflow 是否运行
+        fail("Force failure to verify GitHub Actions is working");
     }
 
     /**
